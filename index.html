@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checklist de Implantação</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-arius px-3">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-top">
+        </a>
+        <button class="btn btn-primary btn-print" onclick="imprimir()">Imprimir</button> <!-- Botão de imprimir -->
+        <button class="btn btn-primary btn-print" onclick="enviarEmail()">Enviar no e-mail</button> <!-- Botão de imprimir -->
+    </nav>
+
+    <div class="container mt-4">
+
+        <h2 class="text-arius">Progresso da implantação</h2>
+        
+        <div class="mb-4 position-relative" style="height: 250px;">
+            <canvas id="progressChart"></canvas>
+            <div id="chartPercentage" class="position-absolute top-50 start-50 translate-middle fw-bold" style="font-size: 1.5rem;">0%</div>
+        </div>    
+        
+       
+        <h5 class="mt-4">Validações básicas do Servidor</h5>
+        <ul class="list-group">
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check1"><label class="form-check-label" for="check1"> Acompanhar todos os e-mails referentes à implantação</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check2"><label class="form-check-label" for="check2"> Conferir Licença</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check3"><label class="form-check-label" for="check3"> Conferir CSC Token e CSC Token ID</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check4"><label class="form-check-label" for="check4"> Conferir Certificado Digital</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check5"><label class="form-check-label" for="check5"> Cobrar status da VPN se for nuvem</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check6"><label class="form-check-label" for="check6"> Conferir se a carga de produtos está baixando</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check7"><label class="form-check-label" for="check7"> Criar os PDV's no KW</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check8"><label class="form-check-label" for="check8"> Criar os PDV's no ERP</label></div></li>            
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check9"><label class="form-check-label" for="check9"> Colocar Token TLS <b>/servidor/pdv/linux/posnet</b> </label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check10"><label class="form-check-label" for="check10"> Colocar CliSiTef <b>/servidor/pdv/linux/posnet</b> </label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check11"><label class="form-check-label" for="check11"> Colocar Imagem <b>/servidor/pdv/linux/posnet</b> </label></div></li>                        
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check12"><label class="form-check-label" for="check12"> Validar tributações do ERP <b>(04%, 07%, 12%, 20.5%, 22.5%, 25%, 27%)</b> Comparar no KW</label></div></li>                        
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check13"><label class="form-check-label" for="check13"> Quando for definido a data de mudança Revisar paramentros de configuração <b>(Regime, Meios de pagamento, alíquotas, perfil de hardware, pdv's, Impressoras meios de pagamentos, caracteristicas, NFCE/SAT, Digitos de balança, Configurações Gerais.)</b></label></div></li>                        
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check14"><label class="form-check-label" for="check14"> Pedir para cliente efetuar conferência fiscal dos ultimos 3 dias</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check15"><label class="form-check-label" for="check15"> Pedir para o cliente garantir que a venda do sistema antigo do pdv subiu para o servidor</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check16"><label class="form-check-label" for="check16"> Colocar arquivo do busca preço no servidor e depois confiurar busca preço fisíco</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check17"><label class="form-check-label" for="check17"> Conferir número do estabelecimento comparando Via TEF com Via POS</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check18"><label class="form-check-label" for="check18"> Validar carga geral e complementar</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check19"><label class="form-check-label" for="check19"> Validar Digitos de balança e carga de balança de retaguarda comparar com sistema antigo></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check20"><label class="form-check-label" for="check20"> Validar Digitos de balança</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check21"><label class="form-check-label" for="check21"> Usuários de 0-9 automação</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check22"><label class="form-check-label" for="check22"> Usuários de 10-20 fiscal</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check23"><label class="form-check-label" for="check23"> Usuários de 30-50 operadora</label></div></li>
+        </ul>             
+        
+        <h5 class="mt-4">Ao chegar na loja</h5>
+        <ul class="list-group">                        
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check24"><label class="form-check-label" for="check24"> Verificar se o cliente tem No-brake</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check25"><label class="form-check-label" for="check25"> Verificar se o cliente tem ponto de rede disponível</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check26"><label class="form-check-label" for="check26"> Conectar o servidor no nobrake caso seja local</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check27"><label class="form-check-label" for="check27"> Configurar os servidores na mesma faixa de IP do cliente</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check28"><label class="form-check-label" for="check28"> Conferir data e hora do servidor KW e retaguarda</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check29"><label class="form-check-label" for="check29"> Se o Servidor for Virtualizado >> Colocar para iniciar automático</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check30"><label class="form-check-label" for="check30"> Montar um PDV e fazer uma venda teste para validar as informações</label></div></li>            
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check31"><label class="form-check-label" for="check31"> Instalar os PDV's NEO/KW <b>(BS: Se for NEo Verificar Nº do guid e Nº de nota)</b>  </label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check32"><label class="form-check-label" for="check32"> Atualizar imagem</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check33"><label class="form-check-label" for="check33"> Testar Etiqueta de balança</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check34"><label class="form-check-label" for="check34"> Testar Pinpad</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check35"><label class="form-check-label" for="check35"> Testar Balança</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check36"><label class="form-check-label" for="check36"> Testar Scanner</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check37"><label class="form-check-label" for="check37"> Testar Leitor Biométrico</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check38"><label class="form-check-label" for="check38"> Testar Impressora</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check39"><label class="form-check-label" for="check39"> Conferir alguns preços nos pdvs</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check40"><label class="form-check-label" for="check40"> Configurar o busca preço</label></div></li>
+        </ul>
+        
+        <h5 class="mt-4">Realizar o treinamento</h5>
+        <ul class="list-group">
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check41"><label class="form-check-label" for="check41"> Cadastrar usuários</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check42"><label class="form-check-label" for="check42"> Treinamento Operadora de caixa</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check43"><label class="form-check-label" for="check43"> Treinamento Fiscal de caixa</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check44"><label class="form-check-label" for="check44"> Treinamento de backup XML KW <b>pastas NFCERESP, NFCEPROC</b></label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check45"><label class="form-check-label" for="check45"> Treinamento de backup Servidor <b>pasta /backup arquivos controle e retag</b></label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check46"><label class="form-check-label" for="check46"> Treinamento de backup Servidor <b>pasta /backup_ariusloja arquivos base_de_dados = Configurações = controle</b></label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check47"><label class="form-check-label" for="check47"> Treinamento de backup Servidor <b>pasta /backup_ariusloja arquivos base_movimento = movimento = retag</b></label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check48"><label class="form-check-label" for="check48"> Treinamento de backup XML NEO <b>integração >> Manutenção de XML >> Download de XML</b></label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check49"><label class="form-check-label" for="check49"> Treinamento de conferência de venda</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check50"><label class="form-check-label" for="check50"> Treinamento dos relatórios do KW</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check51"><label class="form-check-label" for="check51"> Treinamento do relatório Sitef</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check52"><label class="form-check-label" for="check52"> Treinamento de conferência de caixa</label></div></li>
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check53"><label class="form-check-label" for="check53"> Treinamento de Abertura de ticket para correção de diferença</label></div></li>
+        </ul>
+
+        <h5 class="mt-4">Finalizações</h5>
+        <ul class="list-group">
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check54"><label class="form-check-label" for="check54"> Recolher assinaturas do cliente</label></div></li>            
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check55"><label class="form-check-label" for="check55"> Entregar o documento de backup</label></div></li>            
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check56"><label class="form-check-label" for="check56"> Fazer relatório de atendimento técnico</label></div></li>            
+            <li class="list-group-item"><div class="form-check"><input class="form-check-input checklist-item" type="checkbox" id="check57"><label class="form-check-label" for="check57"> Conferir as tabelas do banco de frente de loja <b>(Convert tributações, Tributações)</b></label></div></li>            
+        </ul>
+       
+
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p class="mb-0">© 2025 LeandroSJ| Distribuição Livre</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            const checkboxes = document.querySelectorAll('.checklist-item');
+            const totalTasks = checkboxes.length;
+            const percentageLabel = document.getElementById('chartPercentage');
+
+            let completedTasks = 0;
+            const progressChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Concluído', 'Pendente'],
+                    datasets: [{
+                        data: [0, totalTasks],
+                        backgroundColor: ['#28a745', '#dc3545']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%'
+                }
+            });
+
+            // Função para salvar o estado dos checkboxes e o progresso
+            function saveState() {
+                const checkboxStates = [];
+                checkboxes.forEach(checkbox => {
+                    checkboxStates.push({
+                        id: checkbox.id,
+                        checked: checkbox.checked
+                    });
+                });
+                const progress = Math.round((completedTasks / totalTasks) * 100);
+                localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
+                localStorage.setItem('progress', progress);
+            }
+
+            // Função para restaurar o estado dos checkboxes e o progresso
+            function restoreState() {
+                const savedState = localStorage.getItem('checkboxStates');
+                if (savedState) {
+                    const checkboxStates = JSON.parse(savedState);
+                    checkboxStates.forEach(state => {
+                        const checkbox = document.getElementById(state.id);
+                        if (checkbox) {
+                            checkbox.checked = state.checked;
+                        }
+                    });
+                }
+                const savedProgress = localStorage.getItem('progress');
+                if (savedProgress) {
+                    completedTasks = (savedProgress / 100) * totalTasks;
+                    let percentage = savedProgress;
+                    progressChart.data.datasets[0].data = [completedTasks, totalTasks - completedTasks];
+                    progressChart.update();
+                    percentageLabel.textContent = percentage + '%';
+                }
+            }
+
+            // Restaura o estado dos checkboxes e do progresso ao carregar a página
+            restoreState();
+
+            checkboxes.forEach(item => {
+                item.addEventListener('change', () => {
+                    completedTasks = document.querySelectorAll('.checklist-item:checked').length;
+                    let percentage = Math.round((completedTasks / totalTasks) * 100);
+                    progressChart.data.datasets[0].data = [completedTasks, totalTasks - completedTasks];
+                    progressChart.update();
+                    percentageLabel.textContent = percentage + '%';
+
+                    // Salva o estado dos checkboxes e o progresso ao mudar
+                    saveState();
+                });
+            });
+        });
+
+        function imprimir() {
+            window.print();  // Função para acionar a impressão
+        }
+        
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            emailjs.init("u2qgh8IC8c408yEPi");  // Substitua pela sua chave pública do EmailJS
+        });
+    
+        function enviarEmail() {
+            let mensagem = "Checklist de Implantação:\n\n";  // Título inicial do e-mail
+    
+            // Captura os títulos h5 e lista de checklist
+            let titulos = document.querySelectorAll('h5');
+            
+            titulos.forEach(titulo => {
+                mensagem += `${titulo.innerText}\n`;  // Adiciona o texto dos elementos h5
+                let checklist = titulo.nextElementSibling.querySelectorAll('.checklist-item');  // Captura a checklist relacionada ao título
+                
+                checklist.forEach(item => {
+                    let textoItem = item.nextElementSibling ? item.nextElementSibling.innerText : "Item sem descrição";
+                    mensagem += `${item.checked ? '[X]' : '[ ]'} ${textoItem}\n`;  // Formatação do item da checklist
+                });
+    
+                mensagem += '\n';  // Linha em branco entre os blocos de título e checklist
+            });
+    
+
+            let assunto = "Checklist de Implantação - Status de Tarefas";
+            // Passa a mensagem formatada como parâmetro para o envio
+            let params = {
+                message: mensagem,
+                subject: assunto
+            };
+    
+            // Envia o e-mail usando o EmailJS
+            emailjs.send("default_service", "template_7a7szg6", params)
+                .then(() => {
+                    alert('E-mail enviado com sucesso!');
+                })
+                .catch((err) => {
+                    alert('Erro ao enviar: ' + JSON.stringify(err));
+                });
+        }
+    </script>
+    
+    
+
+
+</body>
+</html>

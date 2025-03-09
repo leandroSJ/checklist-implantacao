@@ -1,0 +1,104 @@
+
+/*Navbar*/
+.bg-arius{
+    background-color: #1d4287;
+}
+
+.text-arius{
+    color: #1d4287;
+    text-transform: uppercase;
+}
+
+h2, h5{
+    text-transform: uppercase;
+}
+
+/* Ajuste para que a página seja formatada como A4 para impressão */
+img{
+    width: auto;
+}
+
+@page {
+size: A4;
+margin: 20mm;
+
+/* Remover o rodapé da impressão */
+@bottom-left {
+    content: none;
+}
+
+@bottom-right {
+    content: none;
+}
+
+@top-right {
+    content: none;
+}
+
+@top-left {
+    content: none;
+}
+}
+
+
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+/* Garantir que o conteúdo se ajusta corretamente à página A4 */
+.container {
+width: 100%;
+max-width: 210mm;
+margin: 0 auto;
+}
+
+/* Ajustando o layout do gráfico */
+#progressChart {
+max-width: 100%;
+height: 200px;
+}
+
+h2,
+h4,
+h5 {
+margin-top: 20px;
+}
+
+.list-group-item {
+padding: 10px 15px;
+}
+
+.btn-print {
+background-color: #1d4287;
+cursor: pointer;
+
+}
+
+
+/* Estilo para impressão */
+@media print {
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-print {
+    display: none;
+}
+
+.navbar,
+footer {
+    display: none;
+}
+
+#chartPercentage {
+    display: block !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 210mm;
+}
+}
