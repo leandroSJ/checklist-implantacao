@@ -13,6 +13,10 @@ h2, h5{
     text-transform: uppercase;
 }
 
+label{
+    cursor: pointer;
+}
+
 /* Ajuste para que a página seja formatada como A4 para impressão */
 img{
     width: auto;
