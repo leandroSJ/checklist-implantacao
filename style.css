@@ -9,12 +9,16 @@
     text-transform: uppercase;
 }
 
-h2, h5{
-    text-transform: uppercase;
+.form-check-input{
+    cursor: pointer;
 }
 
-label {
-    cursor: pointer !important;
+.form-control{
+    width: auto;
+}
+
+h2, h5{
+    text-transform: uppercase;
 }
 
 /* Ajuste para que a página seja formatada como A4 para impressão */
