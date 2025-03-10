@@ -10,15 +10,22 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-arius px-3">
+    <nav class="navbar navbar-dark bg-arius px-3 navbar-expand-lg">
         <a class="navbar-brand" href="#">
             <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-top">
         </a>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" id="loja" placeholder="Nome do cliente" aria-label="Search">
-            <button class="btn btn-primary me-2" type="button" onclick="enviarEmail()">Enviar no e-mail</button>
-            <button class="btn btn-primary" type="button" onclick="imprimir()">Imprimir</button>
-        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-flex flex-column flex-lg-row gap-2 mt-2 mt-lg-0 w-100" role="search">
+                <input class="form-control w-100 w-lg-auto" type="search" id="loja" placeholder="Nome do cliente" aria-label="Search">
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                    <button class="btn btn-primary" type="button" onclick="enviarEmail()">Enviar no e-mail</button>
+                    <button class="btn btn-primary" type="button" onclick="imprimir()">Imprimir</button>
+                </div>
+            </form>
+        </div>
     </nav>
     
 
