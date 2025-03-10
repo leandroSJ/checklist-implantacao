@@ -14,9 +14,13 @@
         <a class="navbar-brand" href="#">
             <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-top">
         </a>
-        <button class="btn btn-primary btn-print" onclick="imprimir()">Imprimir</button> <!-- Botão de imprimir -->
-        <button class="btn btn-primary btn-print" onclick="enviarEmail()">Enviar no e-mail</button> <!-- Botão de imprimir -->
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" id="loja" placeholder="Nome do cliente" aria-label="Search">
+            <button class="btn btn-primary me-2" type="button" onclick="enviarEmail()">Enviar no e-mail</button>
+            <button class="btn btn-primary" type="button" onclick="imprimir()">Imprimir</button>
+        </form>
     </nav>
+    
 
     <div class="container mt-4">
 
@@ -217,7 +221,8 @@
             });
     
 
-            let assunto = "Checklist de Implantação - Status de Tarefas";
+            let assunto = "Checklist de Implantação | Cliente: " + document.getElementById("loja").value ;
+
             // Passa a mensagem formatada como parâmetro para o envio
             let params = {
                 message: mensagem,
