@@ -1,40 +1,47 @@
+# 📋 Checklist de Implantação
 
-# Checklist de Implantação
+Ferramenta web desenvolvida para **padronizar e acompanhar implantações de sistemas em ambientes de varejo**.
 
-Ferramenta desenvolvida para auxiliar no processo de implantação de sistemas em ambientes de varejo, padronizando as etapas técnicas e operacionais envolvidas. Permite acompanhar o progresso das tarefas por meio de um checklist interativo com gráfico de status em tempo real, além de recursos para impressão e envio por e-mail.
+O projeto nasceu de uma necessidade prática: reduzir esquecimentos, organizar etapas técnicas e operacionais e facilitar o acompanhamento do progresso durante uma implantação.
 
-## Funcionalidades
+## ✨ Funcionalidades
 
-- Checklist completo com mais de 50 etapas organizadas por categoria
+- Mais de 50 etapas organizadas por categoria
 - Salvamento automático do progresso no navegador
-- Gráfico de progresso dinâmico
-- Botões para imprimir ou enviar o checklist por e-mail
-- Interface responsiva, compatível com desktop e dispositivos móveis
+- Barra e gráfico de progresso em tempo real
+- Impressão do checklist concluído
+- Envio de resumo por e-mail via EmailJS
+- Interface responsiva para desktop e dispositivos móveis
 
-## Como usar
+## 🧰 Tecnologias
 
-1. Abrir o arquivo `index.html` em qualquer navegador moderno ou acessar diretamente via GitHub Pages.
-2. Preencher o campo “Nome do cliente” no topo da página.
-3. Marcar os itens conforme forem sendo concluídos.
-4. A barra de progresso será atualizada automaticamente com base no número de tarefas realizadas.
-5. O progresso será salvo localmente no navegador, mesmo após recarregar a página.
-6. Ao finalizar, você pode:
-   - Clicar em “Imprimir” para gerar uma versão física
-   - Ou clicar em “Enviar no e-mail” para disparar um resumo das atividades via EmailJS
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- Chart.js
+- EmailJS
+- LocalStorage
 
-## Personalização
+## 🚀 Como usar
 
-- Logo: Substitua o arquivo `logo.png` pela identidade visual da sua empresa.
-- Checklist: Os itens podem ser editados diretamente no HTML, seguindo o padrão utilizado nas tags `<ul>` e `<li>`.
-- Envio por e-mail:
-  - Configure seu próprio serviço e template no [EmailJS](https://www.emailjs.com/)
-  - Substitua as chaves no trecho `emailjs.init(...)` e `emailjs.send(...)` com suas credenciais.
+1. Clone ou baixe este repositório.
+2. Abra o arquivo `index.html` em um navegador moderno.
+3. Informe o nome do cliente.
+4. Marque as atividades conforme forem concluídas.
+5. Acompanhe o progresso pela barra e pelo gráfico.
+6. Ao finalizar, imprima o checklist ou envie o resumo por e-mail.
 
-## Requisitos
+## ⚙️ Personalização
 
-- Navegador atualizado (Chrome, Firefox, Edge ou Safari)
-- Conexão com a internet para utilizar o EmailJS e os recursos via CDN (Bootstrap, Chart.js)
+A estrutura pode ser adaptada para outros processos de implantação.
 
-## Observações
+- **Logo:** substitua `logo.png`.
+- **Checklist:** edite os itens diretamente no HTML.
+- **E-mail:** configure seu próprio serviço/template no EmailJS antes de utilizar o envio.
 
-Este projeto pode ser adaptado livremente para outras realidades e equipes. A estrutura foi pensada para facilitar o dia a dia técnico de implantações, minimizando esquecimentos e otimizando o processo de documentação das atividades.
+> Nunca publique chaves privadas ou credenciais reais diretamente no código-fonte.
+
+## 🎯 Objetivo do projeto
+
+Mais do que um checklist, esta ferramenta representa uma tentativa de transformar experiência operacional em software: identificar um problema recorrente do processo de implantação e criar uma solução simples para padronizá-lo.
